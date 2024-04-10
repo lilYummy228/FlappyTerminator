@@ -9,14 +9,14 @@ public class PlayerShooter : Shooter
             TakeBullet(Vector3.right);
     }
 
-    public override IEnumerator SetBulletDirection(Obstacle obstacle)
+    public override IEnumerator SetBulletDirection(Obstacle bullet)
     {
-        while (obstacle.transform.position.x - transform.position.x <= RemoveDistance)
+        while (bullet.transform.position.x - transform.position.x <= RemoveDistance)
         {
-            obstacle.transform.position += Vector3.right * Speed * Time.deltaTime;
+            bullet.transform.position += Vector3.right * Speed * Time.deltaTime;
             yield return null;
         }
 
-        Pool.PutObject(obstacle);
+        BulletPool.PutObject(bullet);
     }
 }

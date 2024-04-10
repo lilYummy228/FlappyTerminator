@@ -27,14 +27,14 @@ public class EnemyShooter : Shooter
         }
     }
 
-    public override IEnumerator SetBulletDirection(Obstacle obstacle)
+    public override IEnumerator SetBulletDirection(Obstacle bullet)
     {
-        while (obstacle.transform.position.x - transform.position.x >= -RemoveDistance)
+        while (bullet.transform.position.x - transform.position.x >= -RemoveDistance)
         {
-            obstacle.transform.Translate(Vector3.left * Speed * Time.deltaTime);
+            bullet.transform.Translate(Vector3.left * Speed * Time.deltaTime);
             yield return null;
         }
 
-        Pool.PutObject(obstacle);
+        BulletPool.PutObject(bullet);
     }
 }

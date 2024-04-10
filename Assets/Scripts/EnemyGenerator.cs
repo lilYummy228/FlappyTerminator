@@ -6,12 +6,12 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private float _delay;
     [SerializeField] private float _lowerBound;
     [SerializeField] private float _upperBound;
-    [SerializeField] private ObjectPool _pool;
+    [SerializeField] private ObjectPool _enemyPool;
 
     private void Start()
     {
         StartCoroutine(GenerateEnemy());
-        _pool.Reset();
+        _enemyPool.Reset();
     }
 
     private IEnumerator GenerateEnemy()
@@ -30,7 +30,7 @@ public class EnemyGenerator : MonoBehaviour
         float spawnPositionY = Random.Range(_upperBound, _lowerBound);
         Vector3 spawnPoint = new Vector3(transform.position.x, spawnPositionY, transform.position.z);
 
-        var enemy = _pool.GetObject();
+        var enemy = _enemyPool.GetObject();
 
         enemy.gameObject.SetActive(true);
         enemy.transform.position = spawnPoint;
