@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Tracker : MonoBehaviour
+public class PlayerTracker : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private float _offsetX = 3f;

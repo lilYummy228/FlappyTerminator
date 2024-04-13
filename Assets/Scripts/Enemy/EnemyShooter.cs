@@ -27,14 +27,16 @@ public class EnemyShooter : Shooter
         }
     }
 
-    public override IEnumerator SetBulletDirection(Obstacle bullet)
+    public override IEnumerator SetBulletDirection(Bullet bullet)
     {
+        bullet.transform.rotation = _rotation;
+
         while (bullet.transform.position.x - transform.position.x >= -RemoveDistance)
         {
             bullet.transform.Translate(Vector3.left * Speed * Time.deltaTime);
             yield return null;
         }
 
-        BulletPool.PutObject(bullet);
+        BulletPool.PutBullet(bullet);
     }
 }

@@ -5,8 +5,8 @@ public class Game : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private StartScreen _startScreen;
     [SerializeField] private EndScreen _endScreen;
-    [SerializeField] private ObjectPool _enemyPool;
-    [SerializeField] private ObjectPool _bulletPool;
+    [SerializeField] private EnemyPool _enemyPool;
+    [SerializeField] private BulletPool _bulletPool;
 
     private void OnEnable()
     {

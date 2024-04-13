@@ -9,7 +9,7 @@ public class PlayerShooter : Shooter
             TakeBullet(Vector3.right);
     }
 
-    public override IEnumerator SetBulletDirection(Obstacle bullet)
+    public override IEnumerator SetBulletDirection(Bullet bullet)
     {
         while (bullet.transform.position.x - transform.position.x <= RemoveDistance)
         {
@@ -17,6 +17,6 @@ public class PlayerShooter : Shooter
             yield return null;
         }
 
-        BulletPool.PutObject(bullet);
+        BulletPool.PutBullet(bullet);
     }
 }
