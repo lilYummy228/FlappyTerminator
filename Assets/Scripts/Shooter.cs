@@ -6,10 +6,12 @@ public abstract class Shooter : MonoBehaviour
     [SerializeField] private BulletPool _bulletPool;
     [SerializeField] private float _speed;
 
-    protected BulletPool BulletPool => _bulletPool;
+    public BulletPool BulletPool => _bulletPool;
+
+    public float RemoveDistance => 15f;
+
     protected float Speed => _speed;
 
-    public float RemoveDistance { get; private set; } = 15f;
 
     public virtual void TakeBullet(Vector3 offset)
     {

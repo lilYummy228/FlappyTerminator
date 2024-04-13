@@ -26,9 +26,9 @@ public class Player : Character, IInteractable
 
     protected override void OnCollisionDetected(IInteractable interactable)
     {
-        if (interactable is not ScoreCounter)
+        if (interactable is Enemy || interactable is Ground || interactable is Bullet)
             GameOver?.Invoke();
-        else
+        else if (interactable is ScoreZone)
             _scoreCounter.Add();
     }
 }

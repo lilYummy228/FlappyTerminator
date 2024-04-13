@@ -7,7 +7,7 @@ public class EnemyPool : MonoBehaviour
 
     private ObjectPool<Enemy> _enemyPool;
 
-    private void Start()
+    private void Awake()
     {
         _enemyPool = new ObjectPool<Enemy>(_enemy, _container);
     }

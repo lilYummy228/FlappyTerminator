@@ -7,7 +7,7 @@ public class BulletPool : MonoBehaviour
 
     private ObjectPool<Bullet> _bulletPool;
 
-    private void Start()
+    private void Awake()
     {
         _bulletPool = new ObjectPool<Bullet>(_bullet, _container);
     }

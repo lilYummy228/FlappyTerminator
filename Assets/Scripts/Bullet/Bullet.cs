@@ -1,19 +1,14 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class Bullet : MonoBehaviour, IInteractable
 {
     public event Action<Bullet> Hit;
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.TryGetComponent(out IInteractable interactable))
-            Hit?.Invoke(this);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IInteractable interactable))
+        if (collision.TryGetComponent(out IInteractable interectable))
             Hit?.Invoke(this);
     }
 }

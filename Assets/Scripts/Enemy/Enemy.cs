@@ -4,18 +4,23 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyShooter))]
 public class Enemy : Character, IInteractable
 {
-    public event Action<Enemy> Dead;
+    [SerializeField] private ScoreCounter _scoreCounter;
 
-    private EnemyShooter _enemyShooter;
+    public EnemyShooter EnemyShooter { get; private set; }
+
+    public event Action<Enemy> Dead;
 
     private void Start()
     {
-        _enemyShooter = GetComponent<EnemyShooter>();
+        EnemyShooter = GetComponent<EnemyShooter>();
     }
 
     protected override void OnCollisionDetected(IInteractable interactable)
     {
-        if (interactable is Player || interactable is Bullet)
+        if (interactable is Bullet)
+        {
+            _scoreCounter.Add();
             Dead?.Invoke(this);
+        }
     }
 }
