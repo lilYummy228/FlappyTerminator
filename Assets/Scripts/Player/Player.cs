@@ -1,19 +1,18 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Mover), typeof(PlayerShooter), typeof(ScoreCounter))]
+[RequireComponent(typeof(PlayerMover), typeof(PlayerShooter), typeof(ScoreCounter))]
 public class Player : Character, IInteractable
 {
-    private Mover _mover;
+    private PlayerMover _playerMover;
     private ScoreCounter _scoreCounter;
     private PlayerShooter _playerShooter;
 
     public event Action GameOver;
 
-    private void Awake()
+    private void Start()
     {
-        _mover = GetComponent<Mover>();
-        _collisionHandler = GetComponent<CollisionHandler>();
+        _playerMover = GetComponent<PlayerMover>();
         _scoreCounter = GetComponent<ScoreCounter>();
         _playerShooter = GetComponent<PlayerShooter>();
     }
@@ -21,7 +20,7 @@ public class Player : Character, IInteractable
     public void Reset()
     {
         _scoreCounter.Reset();
-        _mover.Reset();
+        _playerMover.Reset();
     }
 
     protected override void OnCollisionDetected(IInteractable interactable)

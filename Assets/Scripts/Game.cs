@@ -26,7 +26,7 @@ public class Game : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 0f;
-        _startScreen.Open();
+        _startScreen.Open();        
     }
 
     private void OnGameOver()
@@ -41,8 +41,7 @@ public class Game : MonoBehaviour
 
     private void OnRestartButtonClicked()
     {
-        _enemyPool.Reset();
-        _bulletPool.Reset();
+        ResetPools();
         _endScreen.Close();
         StartGame();
     }
@@ -57,5 +56,11 @@ public class Game : MonoBehaviour
     {
         Time.timeScale = 1;
         _player.Reset();
+    }
+
+    private void ResetPools()
+    {
+        _bulletPool.Reset();
+        _enemyPool.Reset();
     }
 }

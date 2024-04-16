@@ -5,7 +5,7 @@ public class ObjectPool<T> where T : MonoBehaviour
 {
     private T _prefab;
     private Transform _container;
-    private Queue<T> _pool = new Queue<T>();
+    private Queue<T> _pool = new();
 
     public ObjectPool(T prefab, Transform container)
     {

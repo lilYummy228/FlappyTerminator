@@ -5,38 +5,24 @@ public class EnemyShooter : Shooter
 {
     [SerializeField] private float _delay;
 
-    private Quaternion _rotation;
-    private float _rotationValue = 180;
+    private WaitForSeconds _wait;
 
     private void Start()
     {
-        _rotation = Quaternion.Euler(0, _rotationValue, 0);
-
-        StartCoroutine(Shoot());
+        _wait = new WaitForSeconds(_delay);
     }
 
     private IEnumerator Shoot()
     {
-        var wait = new WaitForSeconds(_delay);
-
         while (enabled)
         {
-            TakeBullet(Vector3.left);
-
-            yield return wait;
+            TakeBullet(_shotPoint, Vector2.left);
+            yield return _wait;
         }
     }
 
-    public override IEnumerator SetBulletDirection(Bullet bullet)
+    public void StartShooting()
     {
-        bullet.transform.rotation = _rotation;
-
-        while (bullet.transform.position.x - transform.position.x >= -RemoveDistance)
-        {
-            bullet.transform.Translate(Vector3.left * Speed * Time.deltaTime);
-            yield return null;
-        }
-
-        BulletPool.PutBullet(bullet);
+        StartCoroutine(nameof(Shoot));
     }
 }

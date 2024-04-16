@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(CollisionHandler))]
 public abstract class Character : MonoBehaviour, IInteractable
 {
-    protected CollisionHandler _collisionHandler;
+    private CollisionHandler _collisionHandler;
 
     private void Awake()
     {
