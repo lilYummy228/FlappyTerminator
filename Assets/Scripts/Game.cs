@@ -7,6 +7,7 @@ public class Game : MonoBehaviour
     [SerializeField] private EndScreen _endScreen;
     [SerializeField] private EnemyPool _enemyPool;
     [SerializeField] private BulletPool _bulletPool;
+    [SerializeField] private EnemyGenerator _enemyGenerator;
 
     private void OnEnable()
     {
@@ -26,12 +27,14 @@ public class Game : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 0f;
-        _startScreen.Open();        
+        _startScreen.Open();
     }
 
     private void OnGameOver()
     {
-        Time.timeScale = 0;
+        _enemyGenerator.StopGenerateEnemy();
+
+        Time.timeScale = 0f;
 
         if (_endScreen.TryGetComponent(out CanvasGroup canvasGroup))
             canvasGroup.blocksRaycasts = true;
@@ -54,8 +57,10 @@ public class Game : MonoBehaviour
 
     private void StartGame()
     {
-        Time.timeScale = 1;
         _player.Reset();
+        Time.timeScale = 1f;
+
+        _enemyGenerator.StartGenerateEnemy();
     }
 
     private void ResetPools()

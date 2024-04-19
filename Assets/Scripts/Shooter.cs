@@ -10,12 +10,20 @@ public abstract class Shooter : MonoBehaviour
     private float _rotationZ;
     private float _rotationY;
 
-    public BulletPool BulletPool => _bulletPool;
-    public float RemoveDistance => 15f;
-
     private void OnEnable()
     {
         _bulletPool = GameObject.Find("BulletContainer").GetComponent<BulletPool>();
+    }
+
+    public virtual IEnumerator SetBulletDirection(Bullet bullet, Vector2 direction)
+    {
+        Vector3 targetPoint = Quaternion.AngleAxis(transform.rotation.eulerAngles.z, Vector3.forward) * direction;
+
+        while (bullet.isActiveAndEnabled)
+        {
+            bullet.transform.position += targetPoint * _speed * Time.deltaTime;
+            yield return null;
+        }
     }
 
     public virtual void TakeBullet(Transform shotPoint, Vector2 direction)
@@ -29,16 +37,5 @@ public abstract class Shooter : MonoBehaviour
         bullet.transform.rotation = Quaternion.Euler(0, _rotationY, _rotationZ);
 
         StartCoroutine(SetBulletDirection(bullet, direction));
-    }
-
-    public virtual IEnumerator SetBulletDirection(Bullet bullet, Vector2 direction)
-    {
-        Vector3 targetPoint = Quaternion.AngleAxis(transform.rotation.eulerAngles.z, Vector3.forward) * direction;
-
-        while (bullet.isActiveAndEnabled)
-        {
-            bullet.transform.position += targetPoint * _speed * Time.deltaTime;
-            yield return null;
-        }
     }
 }

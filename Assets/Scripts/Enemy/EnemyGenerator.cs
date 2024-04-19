@@ -12,18 +12,26 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Start()
     {
-        _wait = new WaitForSeconds(_delay);
-
-        StartCoroutine(nameof(GenerateEnemy));
+        _wait = new WaitForSeconds(_delay);        
     }
 
     private IEnumerator GenerateEnemy()
     {
         while (enabled)
         {
-            Spawn();
             yield return _wait;
+            Spawn();
         }
+    }
+
+    public void StartGenerateEnemy()
+    {
+        StartCoroutine(nameof(GenerateEnemy));
+    }
+
+    public void StopGenerateEnemy()
+    {
+        StopCoroutine(nameof(GenerateEnemy));
     }
 
     private void Spawn()

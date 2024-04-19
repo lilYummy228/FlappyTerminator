@@ -23,7 +23,7 @@ public class EnemyPool : MonoBehaviour
     public void PutEnemy(Enemy enemy)
     {
         _enemyPool.PutObject(enemy);
-        enemy.Dead -= PutEnemy;
+        enemy.Dead -= PutEnemy;                
     }
 
     public void Reset()

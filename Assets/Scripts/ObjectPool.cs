@@ -35,7 +35,8 @@ public class ObjectPool<T> where T : MonoBehaviour
     public void Reset()
     {
         foreach (Transform child in _container)
-            if (child.TryGetComponent(out T gameObject))
-                PutObject(gameObject);
+            Object.Destroy(child.gameObject);
+
+        _pool.Clear();
     }
 }

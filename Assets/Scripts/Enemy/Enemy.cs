@@ -13,6 +13,8 @@ public class Enemy : Character, IInteractable
     protected override void OnCollisionDetected(IInteractable interactable)
     {
         if (interactable is Bullet)
+        {
             Dead?.Invoke(this);
+        }
     }
 }

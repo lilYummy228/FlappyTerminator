@@ -282,6 +282,7 @@ MonoBehaviour:
   _endScreen: {fileID: 1165877157}
   _enemyPool: {fileID: 1767590460}
   _bulletPool: {fileID: 1180502148}
+  _enemyGenerator: {fileID: 1127617214}
 --- !u!1 &687171319
 GameObject:
   m_ObjectHideFlags: 0
