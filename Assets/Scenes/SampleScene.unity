@@ -2068,6 +2068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 12
   _shotPoint: {fileID: 315671557}
+  _delay: 1
 --- !u!114 &1170456699
 MonoBehaviour:
   m_ObjectHideFlags: 0

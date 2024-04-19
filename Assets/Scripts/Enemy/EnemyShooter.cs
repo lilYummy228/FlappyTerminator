@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class EnemyShooter : Shooter
 {
-    [SerializeField] private float _delay;
-
     private WaitForSeconds _wait;
 
     private void Start()

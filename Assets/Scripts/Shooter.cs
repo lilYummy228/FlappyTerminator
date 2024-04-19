@@ -5,6 +5,7 @@ public abstract class Shooter : MonoBehaviour
 {
     [SerializeField] protected float _speed;
     [SerializeField] protected Transform _shotPoint;
+    [SerializeField] protected float _delay;
 
     private BulletPool _bulletPool;
     private float _rotationZ;
@@ -21,7 +22,7 @@ public abstract class Shooter : MonoBehaviour
 
         while (bullet.isActiveAndEnabled)
         {
-            bullet.transform.position += targetPoint * _speed * Time.deltaTime;
+            bullet.Rigidbody.velocity = targetPoint * _speed;
             yield return null;
         }
     }

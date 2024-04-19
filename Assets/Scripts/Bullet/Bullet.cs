@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour, IInteractable
     public event Action<Bullet> Hit;
     private ScoreCounter _scoreCounter;
 
-    public Rigidbody2D Rigidbody {  get; private set; }
+    public Rigidbody2D Rigidbody { get; private set; }
 
     private void Awake()
     {
